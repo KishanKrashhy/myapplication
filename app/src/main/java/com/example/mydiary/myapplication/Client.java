@@ -8,9 +8,8 @@ import java.net.Socket;
 public class Client {
 
 	private String serverMessage;
-	public static  String SERVERIP  = ""; // your computer IP
-															// address
-	public static final int SERVERPORT = 10018;
+	public static  String SERVERIP  = ""; // your computer IP address
+	public static final int SERVERPORT = 10018; // Port number to read the Socket from
 	private OnMessageReceived mMessageListener = null;
 	private boolean mRun = false;
 
@@ -27,10 +26,8 @@ public class Client {
 	}
 
 	/**
-	 * Sends the message entered by client to the server
-	 * 
-	 * @param message
-	 *            text entered by client
+	 * Sends the message entered by client to the server 
+	 text entered by client
 	 */
 	public void sendMessage(String message) throws  IOException {
 		if (out != null && !out.checkError()) {
@@ -49,7 +46,7 @@ public class Client {
 
 		try {
 			
-			// here you must put your computer's IP address.
+			
 			InetAddress serverAddr = InetAddress.getByName(SERVERIP);
 			Log.e("serverAddr", serverAddr.toString());
 			Log.e("TCP Client", "C: Connecting...");
@@ -107,9 +104,7 @@ public class Client {
 
 	}
 
-	// Declare the interface. The method messageReceived(String message) will
-	// must be implemented in the MyActivity
-	// class at on asynckTask doInBackground
+	
 	public interface OnMessageReceived {
 		public void messageReceived(String message);
 	}
