@@ -29,8 +29,6 @@ public class MyCustomAdapter extends BaseAdapter {
     }
  
     @Override
-        //get the data of an item from a specific position
-        //i represents the position of the item in the list
     public Object getItem(int i) {
         return null;
     }
@@ -45,7 +43,7 @@ public class MyCustomAdapter extends BaseAdapter {
  
     public View getView(int position, View view, ViewGroup viewGroup) {
  
-        //check to see if the reused view is null or not, if is not null then reuse it
+        
         if (view == null) {
             view = mLayoutInflater.inflate(R.layout.list_item, null);
         }
@@ -62,7 +60,7 @@ public class MyCustomAdapter extends BaseAdapter {
             }
         }
  
-        //this method must return the view corresponding to the data at the specified position.
+        //this method returns the view corresponding to the data at the specified position.
         return view;
  
     }
