@@ -16,7 +16,7 @@ private Button connect;
 private EditText ipAdress;
 @Override
 protected void onCreate(Bundle savedInstanceState) {
-	// TODO Auto-generated method stub
+
 	super.onCreate(savedInstanceState);
 	setContentView(R.layout.home);
 	ipAdress=(EditText) findViewById(R.id.editText1);
@@ -25,11 +25,14 @@ protected void onCreate(Bundle savedInstanceState) {
 		
 		@Override
 		public void onClick(View v) {
-			// TODO Auto-generated method stub
+			
 			String ip=ipAdress.getText().toString();
-			Client.SERVERIP=ip;
+			Client.SERVERIP=ip; // IP provided by the end user
+			// To open the main Activity page once IP is provided
 			Intent intent = new Intent(getBaseContext(), MainActivity.class);
+			
 			//Log.e("ServerIP", Client.SERVERIP);
+			// To start the Activity
 			startActivity(intent);
 		}
 	});
