@@ -36,12 +36,12 @@ public class MainActivity extends AppCompatActivity {
         final EditText editText = (EditText) findViewById(R.id.editText);
         Button send = (Button)findViewById(R.id.send_button);
 
-        //relate the listView from java to the one created in xml
+        //to relate the listView from java to the one created in xml format
         mList = (ListView)findViewById(R.id.list);
         mAdapter = new MyCustomAdapter(this, arrayList);
         mList.setAdapter(mAdapter);
 
-        // connect to the server
+        // connecting to the server
         new connectTask().execute("");
 
         send.setOnClickListener(new View.OnClickListener() {
@@ -50,10 +50,10 @@ public class MainActivity extends AppCompatActivity {
 
                 String message = editText.getText().toString();
 
-                //add the text in the arrayList
+                //adding text in the arrayList 
                 arrayList.add("Me: " + message);
 
-                //sends the message to the server
+                //sending the message to the server
                 try {
                     if (mClient != null) {
                         mClient.sendMessage(message);
@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
                     Log.d("error: ", e.getMessage());
                 }
 
-                //refresh the list
+                //refreshing the list upon listening to the server socket
                 mAdapter.notifyDataSetChanged();
                 editText.setText("");
             }
@@ -77,10 +77,10 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected Client doInBackground(String... message) {
 
-            //we create a Client object and
+            //creates a Client object
             mClient = new Client(new Client.OnMessageReceived() {
                 @Override
-                //here the messageReceived method is implemented
+                
                 public void messageReceived(String message) {
                     //this method calls the onProgressUpdate
                     publishProgress(message);
@@ -98,7 +98,6 @@ public class MainActivity extends AppCompatActivity {
             //in the arrayList we add the messaged received from server
             arrayList.add(values[0]);
 
-            // notify the adapter that the data set has changed. This means that new message received
             // from server was added to the list
             mAdapter.notifyDataSetChanged();
         }
